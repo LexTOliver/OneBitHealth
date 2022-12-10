@@ -3,19 +3,31 @@ import { StyleSheet} from "react-native";
 const styles = StyleSheet.create({
   resultContainer: {
     flex: 1,
-    marginTop: 16,
-    width: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingBottom: 16,
   },
   resultInfo: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#FF0043',
   },
   resultNumber: {
     fontSize: 48,
     color: '#FF0043',
     fontWeight: 'bold',
-    paddingTop: 40,
+    paddingTop: 16,
+    paddingBottom: 20,
+  },
+  shareButton: {
+    borderRadius: 32,
+    backgroundColor: '#1877F2',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12
+  },
+  shareTextButton: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FFF',
   },
 });
 

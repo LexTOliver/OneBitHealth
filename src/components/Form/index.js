@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Vibration } from "react-native";
+import { View, Text, TouchableOpacity, Vibration, Pressable, Keyboard } from "react-native";
 
 import ResultImc from "../ResultImc";
 import MyInputText from "../MyInputText";
@@ -52,41 +52,50 @@ export default function Form(){
       setErrorMessagePeso("");
       setMessageImc("Seu imc é igual a...");
       setTextButton("Calcular novamente");
-      return;
+    } else {
+      setImc("");
+      setTextButton("Calcular IMC");
+      setMessageImc("Preencha o peso e a altura");
     }
-
-    setImc("");
-    setTextButton("Calcular IMC");
-    setMessageImc("Preencha o peso e a altura");
   }
 
   return (
     <View style={styles.formContext}>
-      <View style={styles.form}>
-        <MyInputText
-          title="Altura"
-          errorMessage={errorMessageAltura}
-          setInputValue={setHeight}
-          value={height}
-          placeholder="Ex. 1.75"
-          keyboardType="numeric"
-        />
-        <MyInputText
-          title="Peso"
-          errorMessage={errorMessagePeso}
-          setInputValue={setWeight}
-          value={weight}
-          placeholder="Ex. 79.845"
-          keyboardType="numeric"
-        />
-        <TouchableOpacity
-         style={styles.formButton} 
-         onPress={() => validationImc()}
-        >
-          <Text style={styles.formTextButton}>{textButton}</Text>
-        </TouchableOpacity>
-      </View>
-      <ResultImc messageResultImc={messageImc} resultImc={imc}/>
+      {imc == "" ?
+        <Pressable onPress={Keyboard.dismiss} style={styles.form}>
+          <MyInputText
+            title="Altura"
+            errorMessage={errorMessageAltura}
+            setInputValue={setHeight}
+            value={height}
+            placeholder="Ex. 1.75"
+            keyboardType="numeric"
+          />
+          <MyInputText
+            title="Peso"
+            errorMessage={errorMessagePeso}
+            setInputValue={setWeight}
+            value={weight}
+            placeholder="Ex. 79.845"
+            keyboardType="numeric"
+          />
+          <TouchableOpacity
+          style={styles.formButton} 
+          onPress={() => validationImc()}
+          >
+            <Text style={styles.formTextButton}>{textButton}</Text>
+          </TouchableOpacity>
+        </Pressable> :
+        <View style={styles.exhibitResultImc}>
+          <ResultImc messageResultImc={messageImc} resultImc={imc}/>
+          <TouchableOpacity
+          style={styles.formButton} 
+          onPress={() => validationImc()}
+          >
+            <Text style={styles.formTextButton}>{textButton}</Text>
+          </TouchableOpacity>
+        </View>
+      }
     </View>
   );
 }

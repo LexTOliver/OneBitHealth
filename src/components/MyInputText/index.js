@@ -5,27 +5,16 @@ import styles from "./style";
 
 export default function MyInputText(props){
   return (
-    <View style={{flex: 1, alignSelf: 'stretch'}}>
+    <View style={{alignSelf: 'stretch'}}>
       <Text style={styles.inputLabel}>{props.title}</Text>
       <Text style={styles.inputErrorMessage}>{props.errorMessage}</Text>
       <TextInput
         style={styles.inputField}
         onChangeText={props.setInputValue}
-        value={value}
+        value={props.inputValue}
         placeholder={props.placeholder}
         keyboardType={props.keyboardType}
       ></TextInput>
     </View>
   );
-}
-
-{
-  // <MyInputText
-  //  title="Altura"
-  //  errorMessage={errorMessageAltura}
-  //  setInputValue={setHeight}
-  //  value={height}
-  //  placeholder="Ex. 1.75"
-  //  keyboardType="numeric"
-  // />
 }

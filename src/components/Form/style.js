@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FFF',
   },
+  exhibitResultImc: {
+    flex: 1,
+  },
 });
 
 export default styles;
