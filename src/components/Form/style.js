@@ -1,4 +1,4 @@
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   formContext: {
@@ -13,11 +13,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   formButton: {
+    alignSelf: 'stretch',
     borderRadius: 8,
     backgroundColor: '#FF0043',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 6,
+    marginVertical: 16,
     padding: 10
   },
   formTextButton: {
