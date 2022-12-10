@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Vibration } from "react-native";
 
 import ResultImc from "../ResultImc";
+import MyInputText from "../MyInputText";
 
 import styles from "./style";
 
@@ -17,8 +18,8 @@ export default function Form(){
 
   function calculateImc() {
     return setImc((
-      (weight.replace(",", ".") * 1) /
-      ((height.replace(",", ".") * 1) * (height.replace(",", ".") * 1))
+      weight.replace(",", ".") /
+      (height.replace(",", ".") * height.replace(",", "."))
       ).toFixed(2));
   }
 
@@ -62,24 +63,22 @@ export default function Form(){
   return (
     <View style={styles.formContext}>
       <View style={styles.form}>
-        <Text style={styles.formLabel}>Altura</Text>
-        <Text style={styles.formErrorMessage}>{errorMessageAltura}</Text>
-        <TextInput
-         style={styles.formInput}
-         onChangeText={setHeight}
-         value={height}
-         placeholder="Ex. 1.75"
-         keyboardType="numeric"
-        ></TextInput>
-        <Text style={styles.formLabel}>Peso</Text>
-        <Text style={styles.formErrorMessage}>{errorMessagePeso}</Text>
-        <TextInput
-         style={styles.formInput}
-         onChangeText={setWeight}
-         value={weight}
-         placeholder="Ex. 78.754"
-         keyboardType="numeric"
-        ></TextInput>
+        <MyInputText
+          title="Altura"
+          errorMessage={errorMessageAltura}
+          setInputValue={setHeight}
+          value={height}
+          placeholder="Ex. 1.75"
+          keyboardType="numeric"
+        />
+        <MyInputText
+          title="Peso"
+          errorMessage={errorMessagePeso}
+          setInputValue={setWeight}
+          value={weight}
+          placeholder="Ex. 79.845"
+          keyboardType="numeric"
+        />
         <TouchableOpacity
          style={styles.formButton} 
          onPress={() => validationImc()}
