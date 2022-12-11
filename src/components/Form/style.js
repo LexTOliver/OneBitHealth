@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   exhibitResultImc: {
-    flex: 1,
+    width: '100%',
   },
   listImcContainer: {
     width: '100%',
