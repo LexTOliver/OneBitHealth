@@ -8,12 +8,12 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   form: {
-    flex: 1,
+    width: '100%',
     height: 'auto',
     alignItems: 'center',
   },
   formButton: {
-    alignSelf: 'stretch',
+    width: '100%',
     borderRadius: 8,
     backgroundColor: '#FF0043',
     alignItems: 'center',
@@ -28,6 +28,22 @@ const styles = StyleSheet.create({
   },
   exhibitResultImc: {
     flex: 1,
+  },
+  listImcContainer: {
+    width: '100%',
+    borderTopWidth: 0.5,
+    borderColor: '#0F0F0F',
+    padding: 8,
+  },
+  listImcItem: {
+    alignSelf: 'auto',
+    borderBottomWidth: 0.5,
+    borderColor: '#FF0043',
+    padding: 8, 
+  },
+  listImcText: {
+    color: '#FF0043',
+    fontSize: 16,
   },
 });
 

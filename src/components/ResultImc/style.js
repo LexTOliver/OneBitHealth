@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#1877F2',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 12
+    paddingVertical: 12,
+    paddingHorizontal: 20,
   },
   shareTextButton: {
     fontSize: 16,

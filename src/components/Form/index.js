@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Vibration, Pressable, Keyboard } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Vibration,
+  Pressable,
+  Keyboard,
+  FlatList,
+  ScrollView
+} from "react-native";
 
 import ResultImc from "../ResultImc";
 import MyInputText from "../MyInputText";
@@ -15,12 +24,21 @@ export default function Form(){
   const [textButton, setTextButton] = useState("Calcular IMC");
   const [errorMessageAltura, setErrorMessageAltura] = useState("");
   const [errorMessagePeso, setErrorMessagePeso] = useState("");
+  const [imcList, setImcList] = useState([]);
 
   function calculateImc() {
-    return setImc((
+    let valueImc = (
       weight.replace(",", ".") /
       (height.replace(",", ".") * height.replace(",", "."))
-      ).toFixed(2));
+    ).toFixed(2); 
+    setImc(valueImc);
+
+    setImcList((arr) => [...arr, {
+      id: new Date().getTime(),
+      height: height,
+      weight: weight,
+      imc: valueImc,
+    }]);
   }
 
   function checkFields(){
@@ -96,6 +114,21 @@ export default function Form(){
           </TouchableOpacity>
         </View>
       }
+      <FlatList
+       style = {styles.listImcContainer}
+       showsVerticalScrollIndicator = {false}
+       data = {imcList.reverse()}
+       renderItem = {({item}) => {
+         return (
+           <View style = {styles.listImcItem}>
+            <Text style = {styles.listImcText}>Altura: {item.height}</Text>
+            <Text style = {styles.listImcText}>Peso: {item.weight}</Text>
+            <Text style = {styles.listImcText}>IMC: {item.imc}</Text>
+          </View>
+        );
+      }}
+      keyExtractor = {item => item.id}
+      />
     </View>
   );
 }

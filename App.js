@@ -8,9 +8,9 @@ import Form from './src/components/Form';
 export default function App() {
   return (
       <View style={styles.container}>
-        <StatusBar style='auto'/>
         <Title value="ONEBITHEALTH!" />
         <Form />
+        <StatusBar style='auto' backgroundColor='#FF0043'/>
       </View>
   );
 }
