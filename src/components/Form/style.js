@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 32,
     backgroundColor: '#FFFFFF',
-    borderRadius: 24,
+    borderTopRightRadius: 24,
+    borderTopLeftRadius: 24,
   },
   form: {
     width: '100%',

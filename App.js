@@ -1,23 +1,37 @@
-import { StyleSheet, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import Title from './src/components/Title';
-import Form from './src/components/Form';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicon from '@expo/vector-icons/Ionicons';
 
 
+import HomePage from './src/pages/HomePage';
+import ImcCalcPage from './src/pages/ImcCalcPage';
+
+const Tab = createBottomTabNavigator();
+const navigationOptions = ({ route }) => ({
+  headerShown: false,
+  tabBarIcon: ({ focused, color, size }) => {
+    let iconName;
+
+    if (route.name === 'HomePage') {
+      iconName = focused ? 'home' : 'home-outline';
+    } else if (route.name === 'CalculateIMC') {
+      iconName = focused ? 'calculator' : 'calculator-outline';
+    }
+
+    // You can return any component that you like here!
+    return <Ionicon name={iconName} size={size} color={color} />;
+  },
+  tabBarActiveTintColor: '#FF0043',
+  tabBarInactiveTintColor: 'gray',
+});
 
 export default function App() {
   return (
-      <View style={styles.container}>
-        <Title value="ONEBITHEALTH!" />
-        <Form />
-        <StatusBar style='auto' backgroundColor='#FF0043'/>
-      </View>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={navigationOptions}>
+        <Tab.Screen name='HomePage' component={HomePage} />
+        <Tab.Screen name='CalculateIMC' component={ImcCalcPage}/>
+        </Tab.Navigator>
+      </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F3EAE9',
-  },
-});
